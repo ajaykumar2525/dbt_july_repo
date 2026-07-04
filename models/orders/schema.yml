@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: orders
+    description: Stores customer order details.
+
+    columns:
+      - name: ORDER_ID
+        description: Unique identifier for each order.
+        tests:
+          - unique
+          - not_null
+
+      - name: CUSTOMER_NAME
+        description: Name of the customer who placed the order.
+        tests:
+          - not_null
+
+      - name: PRODUCT_NAME
+        description: Name of the product ordered.
+        tests:
+          - not_null
+
+      - name: CATEGORY
+        description: Product category.
+
+      - name: QUANTITY
+        description: Quantity of products ordered.
+        tests:
+          - not_null
+
+      - name: PRICE
+        description: Price of the product.
+        tests:
+          - not_null
+
+      - name: ORDER_DATE
+        description: Date on which the order was placed.
+        tests:
+          - not_null
+
+      - name: CITY
+        description: City where the order was placed.
+
+      - name: STATUS
+        description: Current status of the order.
