@@ -1,0 +1,137 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: Staging model for customer master data.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: first_name
+        tests: [not_null]
+      - name: last_name
+        tests: [not_null]
+      - name: email_address
+        tests: [not_null]
+      - name: gender
+        tests:
+          - accepted_values:
+              arguments:
+                values: [M, F]
+      - name: city
+        tests: [not_null]
+      - name: state
+        tests: [not_null]
+      - name: country
+        tests: [not_null]
+      - name: customer_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE, INACTIVE]
+      - name: created_date
+        tests: [not_null]
+      - name: last_updated_date
+        tests: [not_null]
+
+  - name: stg_account
+    description: Staging model for account master data.
+    columns:
+      - name: account_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: account_number
+        tests: [unique, not_null]
+      - name: account_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [SAVINGS, CURRENT]
+      - name: branch_id
+        tests: [not_null]
+      - name: open_date
+        tests: [not_null]
+      - name: account_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE, CLOSED]
+      - name: current_balance
+        tests: [not_null]
+      - name: last_updated_date
+        tests: [not_null]
+
+  - name: stg_branch
+    description: Staging model for branch master data.
+    columns:
+      - name: branch_id
+        tests: [unique, not_null]
+      - name: branch_name
+        tests: [not_null]
+      - name: branch_city
+        tests: [not_null]
+      - name: branch_state
+        tests: [not_null]
+      - name: region
+        tests: [not_null]
+      - name: ifsc_code
+        tests: [unique, not_null]
+
+  - name: stg_loan
+    description: Staging model for loan master data.
+    columns:
+      - name: loan_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: loan_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [HOME, PERSONAL]
+      - name: loan_amount
+        tests: [not_null]
+      - name: interest_rate
+        tests: [not_null]
+      - name: emi_amount
+        tests: [not_null]
+      - name: loan_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE, CLOSED]
+      - name: start_date
+        tests: [not_null]
+      - name: end_date
+      - name: last_updated_date
+        tests: [not_null]
+
+  - name: stg_transaction
+    description: Staging model for transaction master data.
+    columns:
+      - name: transaction_id
+        tests: [unique, not_null]
+      - name: account_id
+        tests: [not_null]
+      - name: transaction_date
+        tests: [not_null]
+      - name: transaction_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [DEBIT, CREDIT]
+      - name: transaction_mode
+        tests:
+          - accepted_values:
+              arguments:
+                values: [UPI, NEFT]
+      - name: amount
+        tests: [not_null]
+      - name: merchant_name
+      - name: transaction_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [SUCCESS, FAILED]
+      - name: last_updated_date
+        tests: [not_null]

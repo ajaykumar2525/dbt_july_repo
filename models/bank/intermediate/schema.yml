@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: int_customer_account
+    description: Customer, account, and branch information.
+
+  - name: int_transaction_details
+    description: Transaction details enriched with account information.

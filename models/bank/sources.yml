@@ -1,0 +1,14 @@
+version: 2
+
+sources :
+  - name : raw_bank
+    database: DBT_CLOUD
+    schema: RAW_SCHEMA
+
+    tables:
+      - name: ACCOUNT_MASTER
+        description: related to accounts
+      - name: BRANCH_MASTER
+      - name: CUSTOMER_MASTER
+      - name: LOAN_MASTER
+      - name: TRANSACTION_MASTER
