@@ -6,5 +6,5 @@ sources:
     schema: RAW_SCHEMA
 
     tables:
-      - name: ORDERS
+      - name: ORDERS_NEW
         

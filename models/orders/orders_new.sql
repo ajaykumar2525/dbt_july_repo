@@ -2,7 +2,6 @@
 
 with orders_cte as (
     SELECT 
-        ORDER_ID,
         CUSTOMER_NAME,
         PRODUCT_NAME,
         CATEGORY,
@@ -11,7 +10,7 @@ with orders_cte as (
         ORDER_DATE,
         CITY,
         STATUS
-    FROM {{ source('raw_schema','ORDERS')}}
+    FROM {{source('raw_schema','ORDERS_NEW')}}
 )
 
 select * from orders_cte

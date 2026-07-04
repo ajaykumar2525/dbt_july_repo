@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: orders
+  - name: orders_new
     description: Stores customer order details.
 
     columns:
